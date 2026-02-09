@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilesh Mishra - Senior Engineering Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --accent: #ff3366;
+            --secondary: #1a1a1a;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fafafa;
+            --border: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 8rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -10%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+            transform: skewX(-15deg);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease-out 0.1s backwards;
+        }
+
+        .title {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.6s ease-out 0.2s backwards;
+        }
+
+        .about-intro {
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            animation: fadeInUp 0.6s ease-out 0.3s backwards;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.4s backwards;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-bottom-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-meta {
+            text-align: right;
+        }
+
+        .company-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .date-range {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .experience-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .experience-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-content li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .experience-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Highlights Box */
+        .highlights-box {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff5588 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 0;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlights-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .highlights-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .highlight-stat {
+            text-align: left;
+        }
+
+        .highlight-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-label {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg);
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Education */
+        .education-card {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .education-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .degree {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .education-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        /* Patents */
+        .patents-section {
+            background: white;
+            padding: 3rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .patents-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .patents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .patent-item {
+            padding: 1.5rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+        }
+
+        .patent-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        .patent-text {
+            margin-top: 0.5rem;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-cta {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            main {
+                padding: 3rem 1.5rem;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .experience-meta {
+                text-align: left;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .section-number {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .education-card {
+                grid-template-columns: 1fr;
+            }
+
+            .education-year {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="eyebrow">Senior Engineering Manager</div>
+            <h1>Nilesh Mishra</h1>
+            <p class="title">Building Scalable GenAI Products at Adobe</p>
+            <p class="about-intro">
+                Senior Engineering Manager with 11+ years in building scalable software and GenAI products. 
+                Led teams delivering production AI features at Adobe Illustrator. Strong in system design, 
+                execution, and people leadership. Known for shipping fast, fixing hard problems, and driving 
+                impact without noise. Focused on quality, speed, and real user value.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:nileshmishra93jan@gmail.com" class="contact-link">
+                    <span>✉</span> nileshmishra93jan@gmail.com
+                </a>
+                </a>
+                <a href="https://linkedin.com/in/nilesh9315" target="_blank" class="contact-link">
+                    <span>in</span> linkedin.com/in/nilesh9315
+                </a>
+                <a href="#" class="contact-link">
+                    <span>📍</span> Noida, India
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="experience">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Work Experience</h2>
+            </div>
+
+            <div class="highlights-box">
+                <h3>Current Impact at Adobe Illustrator</h3>
+                <div class="highlights-grid">
+                    <div class="highlight-stat">
+                        <div class="highlight-number">5M+</div>
+                        <div class="highlight-label">Daily users of GenAI features</div>
+                    </div>
+                    <div class="highlight-stat">
+                        <div class="highlight-number">11%</div>
+                        <div class="highlight-label">Revenue uplift YoY from GenAI MAU</div>
+                    </div>
+                    <div class="highlight-stat">
+                        <div class="highlight-number">60%</div>
+                        <div class="highlight-label">Reduction in user effort and time</div>
+                    </div>
+                    <div class="highlight-stat">
+                        <div class="highlight-number">15+</div>
+                        <div class="highlight-label">Engineers led and mentored</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">Sep 2024 - Present</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Senior Engineering Manager</h3>
+                        <ul>
+                            <li>Leading Generative AI initiative in Adobe Illustrator</li>
+                            <li>Shipped GenAI features like Text to Vector, Generative Expand, and third-party models, used daily by 5+ million customers</li>
+                            <li>Achieved 11% revenue uplift YoY due to GenAI MAU in Adobe Illustrator</li>
+                            <li>Turned multi-step creative tasks into one-click AI actions, cutting user effort and time by almost 60%</li>
+                            <li>Led and mentored 15+ strong and focused engineers, building a team that ships fast and reliably</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">2023 - 2024</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Engineering Manager 2</h3>
+                        <ul>
+                            <li>Managed engineering teams delivering critical features for Adobe Illustrator</li>
+                            <li>Drove strategic planning and execution of AI-powered creative tools</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">2021 - 2023</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Engineering Manager</h3>
+                        <ul>
+                            <li>Led cross-functional teams in building scalable software solutions</li>
+                            <li>Implemented strategic initiatives for product development</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">2020 - 2021</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Computer Scientist 2</h3>
+                        <ul>
+                            <li>Developed advanced algorithms and systems for creative software</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">2018 - 2020</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Computer Scientist</h3>
+                        <ul>
+                            <li>Contributed to core product features and system architecture</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">2016 - 2018</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Member of Technical Staff - 2</h3>
+                        <ul>
+                            <li>Designed and implemented software solutions for creative applications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Adobe Inc.</div>
+                        <div class="date-range">2015 - 2016</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Member of Technical Staff</h3>
+                        <ul>
+                            <li>Contributed to product development and engineering initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">D. E. Shaw</div>
+                        <div class="date-range">2015 - 2016</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Member Technical</h3>
+                        <ul>
+                            <li>Worked on technical solutions in financial technology</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-meta">
+                        <div class="company-logo">Samsung Research</div>
+                        <div class="date-range">2014 - 2015</div>
+                    </div>
+                    <div class="experience-content">
+                        <h3>Software Engineer</h3>
+                        <ul>
+                            <li>Developed software solutions for Samsung products</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Skills & Expertise</h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">AI Product Development</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">iOS Development</span>
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Scalable Architecture</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Leadership</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Team Building</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Decision Making</span>
+                        <span class="skill-tag">People Leadership</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Hindi (Fluent)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Education</h2>
+            </div>
+
+            <div class="education-card">
+                <div>
+                    <h3>NIT Allahabad</h3>
+                    <p class="degree">Bachelor of Technology in Computer Science & Engineering</p>
+                </div>
+                <div class="education-year">2014</div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Patents & Speaking</h2>
+            </div>
+
+            <div class="patents-section">
+                <h3>Distinguished Achievements</h3>
+                <div class="patents-grid">
+                    <div class="patent-item">
+                        <div class="patent-number">11</div>
+                        <p class="patent-text">Distinguished Patents in GenAI & Graphic Design domain</p>
+                    </div>
+                    <div class="patent-item">
+                        <div class="patent-number">🎤</div>
+                        <p class="patent-text">Speaker at SIGGRAPH Conference</p>
+                    </div>
+                    <div class="patent-item">
+                        <div class="patent-number">💡</div>
+                        <p class="patent-text">Speaker at Adobe Tech Summit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h2 class="footer-cta">Let's Connect</h2>
+            <p>Interested in collaborating or learning more about my work?</p>
+            <div class="footer-links">
+                <a href="mailto:nileshmishra93jan@gmail.com" class="footer-link">Email Me</a>
+                <a href="https://linkedin.com/in/nilesh9315" target="_blank" class="footer-link">LinkedIn</a>
+            </div>
+            <p style="margin-top: 3rem; opacity: 0.6; font-size: 0.9rem;">© 2026 Nilesh Mishra. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
